@@ -34,11 +34,27 @@ def getCousinNode(node,data,depth):
   if(depth < 0):
     return
   
+
+  if(depth == 1):
+    if(node.right != None and node.right.data == data):
+      return
+    elif(node.left != None and node.left.data == data):
+      return
+
   if(depth == 0):
-    yield node.data
+    #boundary condition for first element
+    if(node.data != data): 
+      yield node.data
+    else:
+      return
   else:
-    yield list(getCousinNode(node.left,data,depth - 1))
-    yield list(getCousinNode(node.right,data,depth - 1))
+    cousins = list(getCousinNode(node.left,data,depth - 1))
+    for cousin in cousins:
+      yield cousin
+    cousins = list(getCousinNode(node.right,data,depth - 1))
+    for cousin in cousins:
+      yield cousin
+
 
 
 root = newNode(3)  
@@ -47,9 +63,9 @@ root.right = newNode(5)
 root.left.left = newNode(1)  
 root.left.right = newNode(4) 
 root.right.right = newNode(6) 
-root.right.left = newNode(7) 
+root.left.left.right = newNode(7) 
 
-data = 6
+data = 4  #data of which cousins are to be searched
 level = getNodeLevel(root,data)
 cousins = list(getCousinNode(root,data,level - 1))
 for cousin in cousins:
