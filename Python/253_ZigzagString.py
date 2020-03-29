@@ -15,7 +15,7 @@ strData = "thisisazigzag"
 
 K = 3
 index = 0
-increase = True
+direction = -1
 strList = ["" for x in range(K)]
 
 
@@ -25,15 +25,11 @@ for char in strData:
         strList[i] += char
       else:
         strList[i] += ' '
-    
-    if increase == True:
-      index += 1
-      if index == (K - 1):
-        increase = False
-    else:
-      index -= 1
-      if index == 0:
-        increase = True
+
+    if index == K - 1 or index == 0:
+      direction *= -1
+
+    index += direction
 
 
 for i in range(0,K):
