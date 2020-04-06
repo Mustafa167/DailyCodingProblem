@@ -20,18 +20,16 @@ class SLinkedList:
 
     def alternateList(self):
       direction = 1
-      prevNode = None
       currNode = self.headval
       nextNode = currNode.nextval
       while currNode != None and currNode.nextval != None:
         if direction == 1:
           if currNode.dataval > nextNode.dataval:
-            swapNode(prevNode,currNode,nextNode)
+            swapData(currNode,nextNode)
         else:
           if currNode.dataval < nextNode.dataval:
-            swapNode(prevNode,currNode,nextNode)
+            swapData(currNode,nextNode)
 
-        prevNode = currNode 
         currNode = currNode.nextval
         nextNode = currNode.nextval
         direction *= -1
@@ -44,7 +42,10 @@ def swapNode(prevNode,currNode,nextNode):
     nextNode.nextval = currNode
 
 
-
+def swapData(currNode,nextNode):
+  temp = currNode.dataval
+  currNode.dataval = nextNode.dataval
+  nextNode.dataval = temp
 
 numlist = SLinkedList()
 numlist.headval = Node(1)
@@ -64,5 +65,6 @@ print("Original list")
 numlist.listprint()
 numlist.alternateList()
 
+print()
 print("Swapped list")
 numlist.listprint()
