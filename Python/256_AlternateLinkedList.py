@@ -61,10 +61,10 @@ e2.nextval = e3
 e3.nextval = e4
 e4.nextval = e5
 
-print("Original list")
-numlist.listprint()
 numlist.alternateList()
 
-print()
-print("Swapped list")
-numlist.listprint()
+ans = [1, 3, 2, 5, 4]
+currNode = numlist.headval
+for item in ans:
+  assert item == currNode.dataval
+  currNode = currNode.nextval
