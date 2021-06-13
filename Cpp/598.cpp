@@ -14,6 +14,8 @@ int main() {
 }
 
 
+//The fair coin probability is 50/50 so the half coin will get removed at every round
+//Above assumption leads us to log2n solution to the problem
 int getRounds(int n)
 {
 	return log2(n);
